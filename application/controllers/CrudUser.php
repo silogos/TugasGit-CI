@@ -70,16 +70,68 @@ class CrudUser extends CI_Controller {
     function edit($id)
 	{
         $where = array('id'=>$id);
-        $data['user'] = $this->user_model->edit('user',$id)->result();
+        $data['user'] = $this->user_model->edit('user',$where)->result();
+        
         
         $this->load->view('user/header');
         $this->load->view('user/edit',$data);
                 
     }
     
+    function edit_aksi()
+	{  
+        $this->form_validation->set_rules('username', 'Username', 'trim|required');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|callback_cek_pw');
+        $this->form_validation->set_rules('password_b', 'Password Baru', 'trim|required');
+        
+        if($this->form_validation->run() == FALSE){
+            $id = $this->input->post('id');
+            $where = array('id'=>$id);
+            $data['user'] = $this->user_model->edit('user',$where)->result();
+        
+        
+            $this->load->view('user/header');
+            $this->load->view('user/edit',$data);
+        
+        }
+        else
+        {
+            echo"<script>alert('Data Telah Diperbaharui..!')</script>";
+            redirect('home/user','refresh');
+        }
+        
+                
+    }
+    
+    function cek_pw($pw)
+    {
+        $id = $this->input->post('id');
+        $username = $this->input->post('username');
+        $password_b = $this->input->post('password_b');
+        
+        $where = array(
+            'id'=>$id,
+            'username'=>$username,
+            'password'=>md5($pw)
+        );
+        
+        $data= array('password'=>$password_b);
+        
+        $query = $this->user_model->tampil_id('user',$where);
+        if($query)
+        {
+            $this->form_validation->set_message('cek_pw','Password Lama salah...!');
+            return FALSE;
+        }
+        else
+        {
+            $this->user_model->update('user',$where,$data);
+            return TRUE;
+        }
+    }
+    
     function delete($id)
 	{
-        $this->load->model('user_model');
         
         $where=array('id'=>$id);
         

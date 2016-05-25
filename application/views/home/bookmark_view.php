@@ -1,5 +1,5 @@
 <div id="container">
-	<h1>USER</h1>
+	<h1>BOOKMARK</h1>
     <ul id="list">
         <li class="user"><a href="<?php echo base_url('index.php/home/user'); ?>"><img src="<?php echo base_url("img/user.png"); ?>" /></a></li>
         <li class="bookmark" style="background: #FFF;"><a href="<?php echo base_url('index.php/home/bookmark'); ?>"><img src="<?php echo base_url("img/bookmark.png"); ?>" /></a></li>
@@ -12,6 +12,7 @@
                     <th>TITLE</th>
                     <th>URL</th>
                     <th>DESCRIPTION</th>
+                    <th>Aksi</th>
                 </thead>
                 <tbody>
                 <?php
@@ -23,8 +24,8 @@
                                 <td>".$row->url."</td>
                                 <td>".$row->description."</td>
                                 <td>
-                                    <a href=".base_url('index.php/home/edit_user/')."/".$row->id."><img src=".base_url("img/update.png")." /></a>
-                                    <a href=".base_url('index.php/home/delete_user/')."/".$row->id."><img src=".base_url("img/delete.png")." /></a>
+                                    <a href=".base_url('index.php/crudbookmark/edit/')."/".$row->id."><img src=".base_url("img/update.png")." /></a>
+                                    <a href=".base_url('index.php/crudbookmark/delete/')."/".$row->id."><img src=".base_url("img/delete.png")." /></a>
                                 </td>
                             </tr>";  
                         $no++;
@@ -33,9 +34,9 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th colspan="4">
+                        <th colspan="5">
                         <?php echo"
-                            <a class='tambah' href=".base_url('index.php/home/tambah_user/').">Tambah User</a>"; 
+                            <a class='tambah' href=".base_url('index.php/crudbookmark/tambah/').">Tambah User</a>"; 
                         ?>
                         </th>
                     </tr>

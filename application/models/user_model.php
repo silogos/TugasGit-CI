@@ -35,7 +35,7 @@
         
         function update($table, $where, $data)
         {
-            $this->db->where($table);
+            $this->db->where($where);
             $this->db->update($table, $data);
         }
         

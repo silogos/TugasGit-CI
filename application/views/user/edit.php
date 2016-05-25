@@ -6,10 +6,12 @@
         foreach ($user as $row){
     ?>
     	<div id="body">
-
-                <input type="text" name="username" value="<?php echo $row->username; ?>" required="" placeholder="Username"/>
-                <input type="password" name="password" value="<?php echo $row->password; ?>" required="" placeholder="Password"/>
-                <input type="submit" value="TAMBAH" id="login" />
+                
+                <input type="hidden" name="id" value="<?php echo $row->id; ?>" required=""/>
+                <input type="text" name="username" value="<?php echo $row->username; ?>" readonly="" required="" placeholder="Username"/>
+                <input type="password" name="password" required="" placeholder="Password Lama"/>
+                <input type="password" name="password_b" required="" placeholder="Password Baru"/>
+                <input type="submit" value="EDIT" id="login" />
             
     	</div>
     <?php } ?>

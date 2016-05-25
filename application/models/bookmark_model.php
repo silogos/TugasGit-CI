@@ -3,7 +3,7 @@
         
         function __construct()
         {
-            
+            parent::__construct();
         }
         
         function tampil()
@@ -19,11 +19,17 @@
         function input($table, $data)
         {
             $this->db->insert($table, $data);
+            return TRUE;
+        }
+        
+        function edit($table, $where)
+        {
+            return $this->db->get_where($table,$where);
         }
         
         function update($table, $where, $data)
         {
-            $this->db->where($table);
+            $this->db->where($where);
             $this->db->update($table, $data);
         }
         
@@ -31,6 +37,7 @@
         {
             $this->db->where($where);
             $this->db->delete($table);
+            return TRUE;
         }
         
     }
