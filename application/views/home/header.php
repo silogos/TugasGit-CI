@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         width: 100%;
         margin: 10px 0;
         padding: 10px 0;
-        text-align: center;
+        text-align: left;
     }
 
 	p.footer {
@@ -79,32 +79,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         height: 25px;
         padding: 0;
         margin: 0;
- 
+        
     }
     #list > li {
         height: inherit;
         float: left;
         padding: 10px 0;
         width: 100px;
+        position: relative;
+        background: #CCC;
     }
     
 	</style>
 </head>
 <body>
-
-<div id="container">
-	<h1>LOGIN</h1>
-    <ul id="list">
-        <li>USER</li>
-        <li>BOOKMARK</li>
-        <li>LOGOUT</li>
-    </ul>
-    	<div id="body">
-            
-    	</div>
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-</div>
-
-</body>
-</html>
