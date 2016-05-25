@@ -52,7 +52,7 @@ class Login extends CI_Controller {
         }
         else
         {
-            $this->form_validation->set_message('check_verify', 'Salah Username atau Password yeuh...!');
+            $this->form_validation->set_message('verify', 'Salah Username atau Password yeuh...!');
             return FALSE;
         }
         

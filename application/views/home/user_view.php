@@ -22,8 +22,8 @@
                                 <td>".$row->username."</td>
                                 <td>".$row->password."</td>
                                 <td>
-                                    <a href=".base_url('index.php/home/edit_user/')."/".$row->id."><img src=".base_url("img/update.png")." /></a>
-                                    <a href=".base_url('index.php/home/delete_user/')."/".$row->id."><img src=".base_url("img/delete.png")." /></a>
+                                    <a href=".base_url('index.php/cruduser/edit/')."/".$row->id."><img src=".base_url("img/update.png")." /></a>
+                                    <a href=".base_url('index.php/cruduser/delete/')."/".$row->id."><img src=".base_url("img/delete.png")." /></a>
                                 </td>
                             </tr>";  
                         $no++;
@@ -34,7 +34,7 @@
                     <tr>
                         <th colspan="4">
                         <?php echo"
-                            <a class='tambah' href=".base_url('index.php/home/tambah_user/').">Tambah User</a>"; 
+                            <a class='tambah' href=".base_url('index.php/cruduser/tambah/').">Tambah User</a>"; 
                         ?>
                         </th>
                     </tr>
