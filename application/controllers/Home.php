@@ -29,6 +29,59 @@ class Home extends CI_Controller {
                 
     }
     
+    function user()
+	{
+        $this->load->model('user_model');
+        $data['user'] = $this->user_model->tampil()->result();
+        
+        $this->load->view('home/header');
+        $this->load->view('home/user_view',$data);
+        $this->load->view('home/footer');
+                
+    }
+    
+    function tambah_user()
+	{
+        
+        $this->load->view('home/header');
+        $this->load->view('home/user_view');
+        $this->load->view('home/footer');
+                
+    }
+    
+    function edit_user()
+	{
+        $this->load->model('user_model');
+        $data['user'] = $this->user_model->tampil()->result();
+        
+        $this->load->view('home/header');
+        $this->load->view('home/user_view',$data);
+        $this->load->view('home/footer');
+                
+    }
+    
+    function delete_user()
+	{
+        $this->load->model('user_model');
+        $data['user'] = $this->user_model->tampil()->result();
+        
+        $this->load->view('home/header');
+        $this->load->view('home/user_view',$data);
+        $this->load->view('home/footer');
+                
+    }
+    
+    function bookmark()
+	{
+        $this->load->model('bookmark_model');
+        $data['bookmark'] = $this->bookmark_model->tampil()->result();
+        
+        $this->load->view('home/header');
+        $this->load->view('home/bookmark_view',$data);
+        $this->load->view('home/footer');
+                
+    }
+    
     function logout()
     {
         

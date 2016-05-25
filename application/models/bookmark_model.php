@@ -1,5 +1,5 @@
 <?php
-    class user_model extends CI_Model {
+    class bookmark_model extends CI_Model {
         
         function __construct()
         {
@@ -8,7 +8,12 @@
         
         function tampil()
         {
-            return $this->db->get('user');
+            return $this->db->get('bookmark');
+        }
+        
+        function tampil_id($id)
+        {
+            return $this->db->get('bookmark');
         }
         
         function input($table, $data)
