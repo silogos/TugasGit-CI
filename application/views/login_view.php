@@ -82,7 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>LOGIN</h1>
     <img src="<?php echo base_url("img/head_login.png"); ?>" />
     <?php echo validation_errors(); ?>
-    <?php echo form_open('verifylogin'); ?>
+    <?php echo form_open('login/'); ?>
     	<div id="body">
 
                 <input type="text" name="username" required="" placeholder="Username"/>

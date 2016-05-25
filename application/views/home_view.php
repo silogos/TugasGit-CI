@@ -32,6 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		font-weight: normal;
 		margin: 0 0 14px 0;
 		padding: 14px 15px 10px 15px;
+        text-align: center;
 	}
 
 	code {
@@ -48,6 +49,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	#body {
 		margin: 0 15px 0 15px;
 	}
+    
+    #body > input {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px 0;
+        text-align: center;
+    }
 
 	p.footer {
 		text-align: right;
@@ -59,28 +67,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 
 	#container {
-		margin: 10px;
+		margin: 10px auto;
+        width: 300px;
 		border: 1px solid #D0D0D0;
 		box-shadow: 0 0 8px #D0D0D0;
+        text-align: center;
 	}
+    
 	</style>
 </head>
 <body>
 
 <div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
-
-	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
-
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/Welcome.php</code>
-
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
-	</div>
+	<h1>LOGIN</h1>
+    	<div id="body">
+            <div style="width: 50%;">
+                USER
+            </div>
+            <div style="width: 50%;">
+                BOOKMARK
+            </div>
+    	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
