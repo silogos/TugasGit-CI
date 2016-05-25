@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		border-bottom: 1px solid #D0D0D0;
 		font-size: 19px;
 		font-weight: normal;
-		margin: 0 0 14px 0;
+		margin: 0;
 		padding: 14px 15px 10px 15px;
         text-align: center;
 	}
@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 
 	#body {
-		margin: 0 15px 0 15px;
+		margin-bottom: 100px;
 	}
     
     #body > input {
@@ -74,19 +74,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         text-align: center;
 	}
     
+    #list {
+        list-style: none;
+        height: 25px;
+        padding: 0;
+        margin: 0;
+ 
+    }
+    #list > li {
+        height: inherit;
+        float: left;
+        padding: 10px 0;
+        width: 100px;
+    }
+    
 	</style>
 </head>
 <body>
 
 <div id="container">
 	<h1>LOGIN</h1>
+    <ul id="list">
+        <li>USER</li>
+        <li>BOOKMARK</li>
+        <li>LOGOUT</li>
+    </ul>
     	<div id="body">
-            <div style="width: 50%;">
-                USER
-            </div>
-            <div style="width: 50%;">
-                BOOKMARK
-            </div>
+            
     	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
