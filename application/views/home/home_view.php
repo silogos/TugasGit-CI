@@ -6,7 +6,9 @@
         <li class="logout"><a href="<?php echo base_url('index.php/home/logout'); ?>"><img src="<?php echo base_url("img/logout.png"); ?>" /></a></li>
     </ul>
     	<div id="body">
-            Selamat Datang di Halaman Admin <?php echo"$username"; ?>.
+        
+            <h2 style="margin: 100px;">Selamat Datang di Halaman Admin <?php echo"$username"; ?>.</h2>
+            
     	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds.</p>

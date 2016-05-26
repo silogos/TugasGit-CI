@@ -2,6 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class CrudBookmark extends CI_Controller {
 
+    private $sesi=array();
+    
     function __construct()
     {
         
@@ -9,6 +11,8 @@ class CrudBookmark extends CI_Controller {
         
         if($this->session->userdata('logged_in'))
         {
+            $session_data = $this->session->userdata('logged_in');
+            $this->sesi = $session_data['username'];
             $this->load->model('bookmark_model');
             $this->load->helper(array('form', 'url'));
             $this->load->library('form_validation');
@@ -23,7 +27,8 @@ class CrudBookmark extends CI_Controller {
     function tambah()
 	{
         
-        $this->load->view('bookmark/header');
+        $sesi['username']=$this->sesi;
+        $this->load->view('user/header',$sesi);
         $this->load->view('bookmark/tambah');
                 
     }
@@ -37,7 +42,8 @@ class CrudBookmark extends CI_Controller {
         
         if($this->form_validation->run() == FALSE)
         {
-            $this->load->view('bookmark/header');
+            $sesi['username']=$this->sesi;
+            $this->load->view('bookmark/header',$sesi);
             $this->load->view('bookmark/tambah');
         }
         else
@@ -71,7 +77,8 @@ class CrudBookmark extends CI_Controller {
         $data['bookmark'] = $this->bookmark_model->edit('bookmark',$where)->result();
         
         
-        $this->load->view('bookmark/header');
+        $sesi['username']=$this->sesi;
+        $this->load->view('user/header',$sesi);
         $this->load->view('bookmark/edit',$data);
                 
     }

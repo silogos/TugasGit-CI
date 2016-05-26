@@ -74,6 +74,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         text-align: center;
 	}
     
+    .username {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        background: #CCC;
+        padding: 5px;
+        border-radius: 0 0 3px 3px;
+    }
+    
 	</style>
 </head>
 <body>
+<div class="username">Signed In : <?php echo"$username"; ?></div>

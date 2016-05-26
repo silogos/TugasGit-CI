@@ -7,6 +7,11 @@ class Login extends CI_Controller {
     {
         
         parent::__construct();
+        if($this->session->userdata('logged_in'))
+        {
+            redirect('home','refresh');
+        }
+        
         $this->load->model('login_model');
         
         

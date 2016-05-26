@@ -2,6 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class CrudUser extends CI_Controller {
 
+    private $sesi=array();        
+
     function __construct()
     {
         
@@ -9,6 +11,8 @@ class CrudUser extends CI_Controller {
         
         if($this->session->userdata('logged_in'))
         {
+            $session_data = $this->session->userdata('logged_in');
+            $this->sesi = $session_data['username'];
             $this->load->model('user_model');
             $this->load->helper(array('form', 'url'));
             $this->load->library('form_validation');
@@ -22,8 +26,8 @@ class CrudUser extends CI_Controller {
     
     function tambah()
 	{
-        
-        $this->load->view('user/header');
+        $sesi['username']=$this->sesi;
+        $this->load->view('user/header',$sesi);
         $this->load->view('user/tambah');
                 
     }
@@ -36,7 +40,8 @@ class CrudUser extends CI_Controller {
         
         if($this->form_validation->run() == FALSE)
         {
-            $this->load->view('user/header');
+            $sesi['username']=$this->sesi;
+            $this->load->view('user/header',$sesi);
             $this->load->view('user/tambah');
         }
         else
@@ -73,7 +78,8 @@ class CrudUser extends CI_Controller {
         $data['user'] = $this->user_model->edit('user',$where)->result();
         
         
-        $this->load->view('user/header');
+        $sesi['username']=$this->sesi;
+        $this->load->view('user/header',$sesi);
         $this->load->view('user/edit',$data);
                 
     }
@@ -89,8 +95,8 @@ class CrudUser extends CI_Controller {
             $where = array('id'=>$id);
             $data['user'] = $this->user_model->edit('user',$where)->result();
         
-        
-            $this->load->view('user/header');
+            $sesi['username']=$this->sesi;
+            $this->load->view('user/header',$sesi);
             $this->load->view('user/edit',$data);
         
         }

@@ -11,7 +11,7 @@
                     <th>ID</th>
                     <th>USERNAME</th>
                     <th>PASSWORD</th>
-                    <th>AKSI</th>
+                    <th colspan="2">AKSI</th>
                 </thead>
                 <tbody>
                 <?php
@@ -23,6 +23,8 @@
                                 <td>".$row->password."</td>
                                 <td>
                                     <a href=".base_url('index.php/cruduser/edit/')."/".$row->id."><img src=".base_url("img/update.png")." /></a>
+                                </td>
+                                <td>
                                     <a href=".base_url('index.php/cruduser/delete/')."/".$row->id."><img src=".base_url("img/delete.png")." /></a>
                                 </td>
                             </tr>";  
@@ -32,7 +34,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th colspan="4">
+                        <th colspan="5">
                         <?php echo"
                             <a class='tambah' href=".base_url('index.php/cruduser/tambah/').">Tambah User</a>"; 
                         ?>

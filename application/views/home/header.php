@@ -101,6 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         float: right;
         padding: 2px;
         border: 1px solid;
+        background: #CCC;
     }
     a.tambah:before{
         content: "";
@@ -112,6 +113,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         margin: 1px 2px 0 0;
     }
     
+    .username {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        background: #CCC;
+        padding: 5px;
+        border-radius: 0 0 3px 3px;
+    }
+    
 	</style>
 </head>
 <body>
+<div class="username">Signed In : <?php echo"$username"; ?></div>
