@@ -93,9 +93,9 @@ class CrudBookmark extends CI_Controller {
         $query = $data['bookmark'] = $this->bookmark_model->update('bookmark',$where,$data);
         
         if($query){
-            echo"<script>alert('Data Telah Terhapus..!')</script>";
+            echo"<script>alert('Data Telah Diperbaharui..!')</script>";
         }else{
-            echo"<script>alert('Data Gagal Terhapus..!')</script>";
+            echo"<script>alert('Data Gagal Diperbaharui..!')</script>";
         }
         
         redirect('home/bookmark','refresh');

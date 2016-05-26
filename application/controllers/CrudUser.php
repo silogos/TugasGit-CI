@@ -81,8 +81,8 @@ class CrudUser extends CI_Controller {
     function edit_aksi()
 	{  
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|callback_cek_pw');
-        $this->form_validation->set_rules('password_b', 'Password Baru', 'trim|required');
+        $this->form_validation->set_rules('pass_word', 'PasswordLama', 'trim|required|callback_cek_pw');
+        $this->form_validation->set_rules('password', 'PasswordBaru', 'trim|required');
         
         if($this->form_validation->run() == FALSE){
             $id = $this->input->post('id');
@@ -97,7 +97,8 @@ class CrudUser extends CI_Controller {
         else
         {
             echo"<script>alert('Data Telah Diperbaharui..!')</script>";
-            redirect('home/user','refresh');
+            redirect('home/user/','refresh');
+            
         }
         
                 
@@ -107,7 +108,7 @@ class CrudUser extends CI_Controller {
     {
         $id = $this->input->post('id');
         $username = $this->input->post('username');
-        $password_b = $this->input->post('password_b');
+        $password_b = $this->input->post('password');
         
         $where = array(
             'id'=>$id,
@@ -115,9 +116,10 @@ class CrudUser extends CI_Controller {
             'password'=>md5($pw)
         );
         
-        $data= array('password'=>$password_b);
+        $data= array('password'=>md5($password_b));
         
-        $query = $this->user_model->tampil_id('user',$where);
+        $query = $this->user_model->cek('user',$where);
+
         if($query)
         {
             $this->form_validation->set_message('cek_pw','Password Lama salah...!');

@@ -31,6 +31,7 @@
         {
             $this->db->where($where);
             $this->db->update($table, $data);
+            return TRUE;
         }
         
         function delete($table, $where)

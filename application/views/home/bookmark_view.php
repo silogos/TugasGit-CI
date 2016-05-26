@@ -12,7 +12,7 @@
                     <th>TITLE</th>
                     <th>URL</th>
                     <th>DESCRIPTION</th>
-                    <th>Aksi</th>
+                    <th colspan="2">Aksi</th>
                 </thead>
                 <tbody>
                 <?php
@@ -25,6 +25,8 @@
                                 <td>".$row->description."</td>
                                 <td>
                                     <a href=".base_url('index.php/crudbookmark/edit/')."/".$row->id."><img src=".base_url("img/update.png")." /></a>
+                                </td>
+                                <td>
                                     <a href=".base_url('index.php/crudbookmark/delete/')."/".$row->id."><img src=".base_url("img/delete.png")." /></a>
                                 </td>
                             </tr>";  
@@ -34,7 +36,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th colspan="5">
+                        <th colspan="6">
                         <?php echo"
                             <a class='tambah' href=".base_url('index.php/crudbookmark/tambah/').">Tambah User</a>"; 
                         ?>

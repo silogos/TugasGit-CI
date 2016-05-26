@@ -9,8 +9,8 @@
                 
                 <input type="hidden" name="id" value="<?php echo $row->id; ?>" required=""/>
                 <input type="text" name="username" value="<?php echo $row->username; ?>" readonly="" required="" placeholder="Username"/>
-                <input type="password" name="password" required="" placeholder="Password Lama"/>
-                <input type="password" name="password_b" required="" placeholder="Password Baru"/>
+                <input type="password" name="pass_word" required="" placeholder="Password Lama"/>
+                <input type="password" name="password" required="" placeholder="Password Baru"/>
                 <input type="submit" value="EDIT" id="login" />
             
     	</div>

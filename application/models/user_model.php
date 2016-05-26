@@ -23,6 +23,41 @@
              
         }
         
+        function cek($table, $where)
+        {
+            
+            $this->db->from($table);
+            $this->db->where('id',$where['id']);
+            $this->db->where('username',$where['username']);
+            $this->db->where('password',$where['password']);
+
+            $query = $this->db->get();
+            
+            if($query->num_rows()=='1'){
+               return FALSE;   
+            }else{
+               return TRUE;
+            }
+             
+        }
+        
+        function updatepw($table, $where, $data)
+        {
+            
+            $this->db->where('id',$where['id']);
+            $this->db->where('username',$where['username']);
+            $this->db->where('password',$where['password']);
+
+            $query=$this->db->update($table, $data);
+            
+            if($query->num_rows()=='1'){
+               return TRUE;   
+            }else{
+               return FALSE;
+            }
+             
+        }
+        
         function input($table, $data)
         {
             $this->db->insert($table, $data);
