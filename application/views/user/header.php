@@ -85,11 +85,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
     .back {
         position: absolute;
-        top: 10.5px;
+        top: 7px;
         left: 0;
         width: 24px;
         height: 24px;
-        background: url('../../img/back.png');
+        padding: 3px;
+        border-radius: 0 3px 3px 0;
+        background: #CCC;
     }
     
 	</style>

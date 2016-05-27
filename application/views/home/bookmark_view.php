@@ -8,10 +8,9 @@
     	<div id="body">
             <table id="table" >
                 <thead>
-                    <th>ID</th>
+                    <th>NO</th>
                     <th>TITLE</th>
                     <th>URL</th>
-                    <th>DESCRIPTION</th>
                     <th colspan="2">Aksi</th>
                 </thead>
                 <tbody>
@@ -20,9 +19,8 @@
                     foreach($bookmark as $row){
                         echo"<tr>
                                 <td>".$no."</td>
-                                <td>".$row->title."</td>
-                                <td>".$row->url."</td>
-                                <td>".$row->description."</td>
+                                <td><a href='".base_url('index.php/crudbookmark/detail_bookmark')."/".$row->id."'>".$row->title."</a></td>
+                                <td><a target='_blank' href=http://".$row->url.">".$row->url."</a></td>
                                 <td>
                                     <a href=".base_url('index.php/crudbookmark/edit/')."/".$row->id."><img src=".base_url("img/update.png")." /></a>
                                 </td>
@@ -45,6 +43,5 @@
                 </tfoot>
             </table>
     	</div>
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds.</p>
+	<p class="footer"><span style="float: left; text-decoration: none;"><a style="text-decoration: none;" href="<?php echo base_url('index.php/home/'); ?>">HOME</a> > <a style="text-decoration: none;" href="<?php echo base_url('index.php/home/bookmark'); ?>">BOOKMARK</a></span> Page rendered in <strong>{elapsed_time}</strong> seconds.</p>
 </div>

@@ -6,9 +6,11 @@
             
         }
         
-        function tampil()
+        function tampil($table, $where)
         {
-            return $this->db->get('user');
+            $this->db->from('user');
+            $this->db->where('username!=',$where['username']);
+            return $this->db->get();
         }
         
         function tampil_id($table, $where)

@@ -8,9 +8,8 @@
     	<div id="body">
             <table id="table" >
                 <thead>
-                    <th>ID</th>
-                    <th>USERNAME</th>
-                    <th>PASSWORD</th>
+                    <th style="width: 50px;" >NO</th>
+                    <th style="width: 700px;">USERNAME</th>
                     <th colspan="2">AKSI</th>
                 </thead>
                 <tbody>
@@ -20,7 +19,6 @@
                         echo"<tr>
                                 <td>".$no."</td>
                                 <td>".$row->username."</td>
-                                <td>".$row->password."</td>
                                 <td>
                                     <a href=".base_url('index.php/cruduser/edit/')."/".$row->id."><img src=".base_url("img/update.png")." /></a>
                                 </td>
@@ -44,5 +42,5 @@
             </table>
     	</div>
 
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds.</p>
+	<p class="footer"><span style="float: left; text-decoration: none;"><a style="text-decoration: none;" href="<?php echo base_url('index.php/home/'); ?>">HOME</a> > <a style="text-decoration: none;" href="<?php echo base_url('index.php/home/user'); ?>">USER</a></span> <strong></strong> </p>
 </div>

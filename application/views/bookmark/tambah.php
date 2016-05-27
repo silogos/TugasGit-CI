@@ -1,13 +1,13 @@
 <div id="container">
-	<h1>TAMBAH BOOKMARK</h1>
-    <img src="<?php echo base_url("img/head_login.png"); ?>" />
+    <a href="<?php echo base_url('index.php/home/bookmark'); ?>" class="back"><img src="<?php echo base_url("img/back.png"); ?>" /></a>	<h1>TAMBAH BOOKMARK</h1>
+    <img src="<?php echo base_url("img/head_bookmark.png"); ?>" />
     <?php echo validation_errors(); ?>
     <?php echo form_open('crudbookmark/tambah_aksi'); ?>
     	<div id="body">
 
                 <input type="text" name="title" required="" placeholder="Title"/>
                 <input type="text" name="url" required="" placeholder="Url"/>
-                <input type="text" name="description" required="" placeholder="Description"/>
+                <textarea style="width: 100%; width: 100%; resize: vertical;"  name="description" placeholder="Description"></textarea>
                 <input type="submit" value="TAMBAH" />
             
     	</div>

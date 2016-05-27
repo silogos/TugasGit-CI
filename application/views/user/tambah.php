@@ -1,5 +1,5 @@
 <div id="container">
-<a class="back">dsaasd</a>
+<a href="<?php echo base_url('index.php/home/user'); ?>" class="back"><img src="<?php echo base_url("img/back.png"); ?>" /></a>
 	<h1>TAMBAH USER</h1>
     <img src="<?php echo base_url("img/head_login.png"); ?>" />
     <?php echo validation_errors(); ?>

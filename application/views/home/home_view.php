@@ -11,5 +11,5 @@
             
     	</div>
 
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds.</p>
+	<p class="footer"><span style="float: left; text-decoration: none;"><a style="text-decoration: none;" href="<?php echo base_url('index.php/home/user'); ?>">HOME</a> ></span> Page rendered in <strong>{elapsed_time}</strong> seconds.</p>
 </div>

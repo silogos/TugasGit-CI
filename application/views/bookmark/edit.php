@@ -1,6 +1,7 @@
 <div id="container">
 	<h1>EDIT BOOKMARK</h1>
-    <img src="<?php echo base_url("img/head_login.png"); ?>" />
+    <a href="<?php echo base_url('index.php/home/bookmark'); ?>" class="back"><img src="<?php echo base_url("img/back.png"); ?>" /></a>
+    <img src="<?php echo base_url("img/head_bookmark.png"); ?>" />
     <?php echo validation_errors(); ?>
     <?php echo form_open('crudbookmark/edit_aksi');
         foreach ($bookmark as $row){

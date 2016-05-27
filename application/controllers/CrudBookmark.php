@@ -24,6 +24,18 @@ class CrudBookmark extends CI_Controller {
         
     }
     
+    function detail_bookmark($id)
+	{
+        $where = array('id'=>$id);
+        $data['bookmark'] = $this->bookmark_model->edit('bookmark',$where)->result();
+        
+        
+        $sesi['username']=$this->sesi;
+        $this->load->view('bookmark/header',$sesi);
+        $this->load->view('bookmark/detail_bookmark',$data);
+                
+    }
+    
     function tambah()
 	{
         
@@ -38,7 +50,7 @@ class CrudBookmark extends CI_Controller {
 	   
         $this->form_validation->set_rules('title', 'Title', 'trim|required');
         $this->form_validation->set_rules('url', 'Url', 'trim|required');
-        $this->form_validation->set_rules('description', 'Description', 'trim|required');
+        $this->form_validation->set_rules('description', 'Description', 'trim');
         
         if($this->form_validation->run() == FALSE)
         {
@@ -50,7 +62,7 @@ class CrudBookmark extends CI_Controller {
         {
             $title = $this->input->post('title');
             $url = $this->input->post('url');
-            $desc = $this->input->post('description');
+            $desc = nl2br($this->input->post('description'));
             
             $data = array('title'=>$title,'url'=>$url,'description'=>$desc);
             $query = $this->bookmark_model->input('bookmark',$data);
