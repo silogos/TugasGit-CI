@@ -24,9 +24,9 @@ class Home extends CI_Controller {
 	function index()
 	{
         $sesi['username']= $this->sesi;
-        $this->load->view('home/header', $sesi);
+        $this->load->view('templates/header', $sesi);
         $this->load->view('home/home_view');
-        $this->load->view('home/footer');
+        $this->load->view('templates/footer');
                 
     }
     
@@ -36,9 +36,9 @@ class Home extends CI_Controller {
         $this->load->model('user_model');
         $data['user'] = $this->user_model->tampil('user',$sesi)->result();
         
-        $this->load->view('home/header',$sesi);
+        $this->load->view('templates/header', $sesi);
         $this->load->view('home/user_view',$data);
-        $this->load->view('home/footer');
+        $this->load->view('templates/footer');
                 
     }
     
@@ -49,9 +49,9 @@ class Home extends CI_Controller {
         $this->load->model('bookmark_model');
         $data['bookmark'] = $this->bookmark_model->tampil()->result();
         
-        $this->load->view('home/header',$sesi);
+        $this->load->view('templates/header', $sesi);
         $this->load->view('home/bookmark_view',$data);
-        $this->load->view('home/footer');
+        $this->load->view('templates/footer');
                 
     }
     

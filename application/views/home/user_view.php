@@ -1,46 +1,68 @@
-<div id="container">
-	<h1>USER</h1>
-    <ul id="list">
-        <li class="user" style="background: #FFF;"><a href="<?php echo base_url('index.php/home/user'); ?>"><img src="<?php echo base_url("img/user.png"); ?>" /></a></li>
-        <li class="bookmark"><a href="<?php echo base_url('index.php/home/bookmark'); ?>"><img src="<?php echo base_url("img/bookmark.png"); ?>" /></a></li>
-        <li class="logout"><a href="<?php echo base_url('index.php/home/logout'); ?>"><img src="<?php echo base_url("img/logout.png"); ?>" /></a></li>
-    </ul>
-    	<div id="body">
-            <table id="table" >
-                <thead>
-                    <th style="width: 50px;" >NO</th>
-                    <th style="width: 700px;">USERNAME</th>
-                    <th colspan="2">AKSI</th>
-                </thead>
-                <tbody>
-                <?php
-                    $no=1;
-                    foreach($user as $row){
-                        echo"<tr>
-                                <td>".$no."</td>
-                                <td>".$row->username."</td>
-                                <td>
-                                    <a href=".base_url('index.php/cruduser/edit/')."/".$row->id."><img src=".base_url("img/update.png")." /></a>
-                                </td>
-                                <td>
-                                    <a href=".base_url('index.php/cruduser/delete/')."/".$row->id."><img src=".base_url("img/delete.png")." /></a>
-                                </td>
-                            </tr>";  
-                        $no++;
-                    }
-                ?>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="5">
-                        <?php echo"
-                            <a class='tambah' href=".base_url('index.php/cruduser/tambah/').">Tambah User</a>"; 
-                        ?>
-                        </th>
-                    </tr>
-                </tfoot>
-            </table>
-    	</div>
-
-	<p class="footer"><span style="float: left; text-decoration: none;"><a style="text-decoration: none;" href="<?php echo base_url('index.php/home/'); ?>">HOME</a> > <a style="text-decoration: none;" href="<?php echo base_url('index.php/home/user'); ?>">USER</a></span> <strong></strong> </p>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugin/datatable/css/dataTables.bootstrap.css'); ?>"/>
+</head>
+<body>
+<div class="blur"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div id="box" class="col-md-8">
+            <h1>USER</h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo base_url('index.php/home/'); ?>">HOME</a></li>
+                <li><a href="<?php echo base_url('index.php/home/user'); ?>">USER</a></li>
+            </ol>
+            <ul class="nav nav-tabs nav-justified">
+                <li><a href="<?php echo base_url('index.php/home/'); ?>">HOME</a></li>
+                <li class="active"><a href="<?php echo base_url('index.php/home/user'); ?>">USER</a></li>
+                <li><a href="<?php echo base_url('index.php/home/bookmark'); ?>">BOOKMARK</a></li>
+            </ul>
+            <div id="content">
+                <table id="user" class="table table-bordered table-striped">
+                    <thead>
+                        <th>NO</th>
+                        <th>USERNAME</th>
+                        <th>AKSI</th>
+                    </thead>
+                    <tbody>
+                    <?php
+                        $no=1;
+                        foreach($user as $row){
+                    ?>
+                        <tr>
+                            <td><?php echo $no; ?> </td>
+                            <td><?php echo $row->username ?></td>
+                            <td>
+                                <?php echo anchor(base_url('index.php/cruduser/edit').'/'.$row->id,'<i class="fa fa-edit"> EDIT</i>',array('class'=>'btn btn-warning')); ?>
+                                <?php echo anchor(base_url('index.php/cruduser/delete').'/'.$row->id,'<i class="fa fa-trash"> DELETE</i>',array('class'=>'btn btn-danger')); ?>
+                            </td>
+                        </tr>
+                    <?php
+                            $no++;
+                        }
+                    ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5">
+                            <?php echo anchor(base_url('index.php/cruduser/tambah'),'<i class="fa fa-plus-square"> TAMBAH</i>',array('class'=>'btn btn-primary')); ?>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+            
+        </div>
+        <div class="col-md-2"></div>
+    </div>    
 </div>
+    <script src="<?php echo base_url('assets/plugin/datatable/js/jquery-1.11.1.min.js') ?>"></script>
+    <script src="<?php echo base_url('assets/plugin/datatable/js/bootstrap.min.js') ?>"></script>
+    <script src="<?php echo base_url('assets/plugin/datatable/js/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?php echo base_url('assets/plugin/datatable/js/dataTables.bootstrap.js') ?>"></script>
+
+    <script>
+        $(function(){
+            $('#user').dataTable();
+        });
+    </script>

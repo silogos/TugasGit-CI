@@ -31,7 +31,7 @@ class CrudBookmark extends CI_Controller {
         
         
         $sesi['username']=$this->sesi;
-        $this->load->view('bookmark/header',$sesi);
+        $this->load->view('templates/header',$sesi);
         $this->load->view('bookmark/detail_bookmark',$data);
                 
     }
@@ -40,7 +40,7 @@ class CrudBookmark extends CI_Controller {
 	{
         
         $sesi['username']=$this->sesi;
-        $this->load->view('user/header',$sesi);
+        $this->load->view('templates/header',$sesi);
         $this->load->view('bookmark/tambah');
                 
     }
@@ -55,7 +55,7 @@ class CrudBookmark extends CI_Controller {
         if($this->form_validation->run() == FALSE)
         {
             $sesi['username']=$this->sesi;
-            $this->load->view('bookmark/header',$sesi);
+            $this->load->view('templates/header',$sesi);
             $this->load->view('bookmark/tambah');
         }
         else
@@ -90,7 +90,7 @@ class CrudBookmark extends CI_Controller {
         
         
         $sesi['username']=$this->sesi;
-        $this->load->view('user/header',$sesi);
+        $this->load->view('templates/header',$sesi);
         $this->load->view('bookmark/edit',$data);
                 
     }

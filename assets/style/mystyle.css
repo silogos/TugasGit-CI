@@ -1,0 +1,29 @@
+*{
+    z-index: 3;
+}
+body {
+    background: url('../../img/background.jpg') fixed no-repeat center center;
+    background-size: cover;
+}
+.blur {
+    background: url('../../img/background.jpg') fixed no-repeat center center; 
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);   
+    filter: blur(5px);
+    z-index: 2;
+}
+#box {
+    margin-top: 100px;
+    border-radius: 3px;
+    background: #FFF;
+    box-shadow: 1px 1px 1px 1px #CCC;
+}
+#content {
+    padding: 10px;
+}

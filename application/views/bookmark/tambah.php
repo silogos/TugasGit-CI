@@ -1,20 +1,41 @@
-<div id="container">
-    <a href="<?php echo base_url('index.php/home/bookmark'); ?>" class="back"><img src="<?php echo base_url("img/back.png"); ?>" /></a>	<h1>TAMBAH BOOKMARK</h1>
-    <img src="<?php echo base_url("img/head_bookmark.png"); ?>" />
-    <?php echo validation_errors(); ?>
-    <?php echo form_open('crudbookmark/tambah_aksi'); ?>
-    	<div id="body">
-
-                <input type="text" name="title" required="" placeholder="Title"/>
-                <input type="text" name="url" required="" placeholder="Url"/>
-                <textarea style="width: 100%; width: 100%; resize: vertical;"  name="description" placeholder="Description"></textarea>
-                <input type="submit" value="TAMBAH" />
+<style>
+    
+</style>
+</head>
+<body>
+<div class="blur"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div id="box" class="col-md-8">
+        
+            <h1>TAMBAH BOOKMARK</h1>
+            <ol class="breadcrumb">
+                <li><a href="<?php echo base_url('index.php/home/'); ?>">HOME</a></li>
+                <li><a href="<?php echo base_url('index.php/home/bookmark'); ?>">BOOKMARK</a></li>
+                <li><a href="#">TAMBAH BOOKMARK</a></li>
+            </ol>
             
-    	</div>
-    </form>
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+            <div id="content">
+                <?php echo validation_errors(); ?>
+                <?php echo form_open('crudbookmark/tambah_aksi'); ?>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="title" required="" placeholder="Title"/>
+                    </div>
+                        
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="url" required="" placeholder="Url"/>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea class="form-control" style="resize: vertical;"  name="description" placeholder="Description"></textarea>
+                    </div>
+    
+                    <input class="form-control btn btn-success" type="submit" value="TAMBAH" />
+                </form>  
+                 
+        	</div>
+         </div>
+         <div class="col-md-2"></div>
+    </div>
 </div>
-
-</body>
-</html>
