@@ -1,6 +1,4 @@
-*{
-    z-index: 3;
-}
+
 body {
     background: url('../../img/background.jpg') fixed no-repeat center center;
     background-size: cover;
@@ -16,13 +14,13 @@ body {
     -o-filter: blur(5px);
     -ms-filter: blur(5px);   
     filter: blur(5px);
-    z-index: 2;
 }
 #box {
-    margin-top: 100px;
+    background: #FFF url(http://2.bp.blogspot.com/-yNE4A_H3C2o/U1E6RPYNEpI/AAAAAAAADRQ/UOP1mUKaxGE/s1600/line.png) repeat-x bottom center;
+    margin-top: 50px;
     border-radius: 3px;
-    background: #FFF;
     box-shadow: 1px 1px 1px 1px #CCC;
+    padding-bottom: 30px;
 }
 #content {
     padding: 10px;

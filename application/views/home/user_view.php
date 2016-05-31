@@ -32,7 +32,7 @@
                             <td><?php echo $no; ?> </td>
                             <td><?php echo $row->username ?></td>
                             <td>
-                                <?php echo anchor(base_url('index.php/cruduser/edit').'/'.$row->id,'<i class="fa fa-edit"> EDIT</i>',array('class'=>'btn btn-warning')); ?>
+                                <?php echo anchor(base_url('index.php/cruduser/edit').'/'.$row->id,'<i class="fa fa-edit"> EDIT</i>',array('class'=>'btn btn-default')); ?>
                                 <?php echo anchor(base_url('index.php/cruduser/delete').'/'.$row->id,'<i class="fa fa-trash"> DELETE</i>',array('class'=>'btn btn-danger')); ?>
                             </td>
                         </tr>
@@ -45,6 +45,7 @@
                         <tr>
                             <th colspan="5">
                             <?php echo anchor(base_url('index.php/cruduser/tambah'),'<i class="fa fa-plus-square"> TAMBAH</i>',array('class'=>'btn btn-primary')); ?>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#hps">Small modal</button>
                             </th>
                         </tr>
                     </tfoot>
@@ -56,13 +57,55 @@
         <div class="col-md-2"></div>
     </div>    
 </div>
-    <script src="<?php echo base_url('assets/plugin/datatable/js/jquery-1.11.1.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/plugin/datatable/js/bootstrap.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/plugin/datatable/js/jquery.dataTables.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/plugin/datatable/js/dataTables.bootstrap.js') ?>"></script>
 
-    <script>
-        $(function(){
-            $('#user').dataTable();
+
+
+<div class="modal" id="hps">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-remove"></i></span></button>
+            <h4 class="modal-title">TAMBAH USER</h4>
+            </div>
+            <form method="POST" class="form-user">
+            <div class="modal-body">
+            
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" required="" placeholder="Username"/>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" required="" placeholder="Password"/>
+                </div>
+                
+                <div id="loadings" style="width: 0px; height: 30px; background: aquamarine;">
+                    
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <a class="form-control btn btn-primary tambahuser" >TAMBAH</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+    
+    
+<script>
+        $(document).ready(function(){
+            $('.tambahuser').click(function(){
+                var data = $('.form-user').serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: "<?php echo base_url('index.php/cruduser/tambah_aksi'); ?>",
+                    data: data,
+                    beforeSend: function(){
+                        $('#loadings').animate({width: '60%'}, 1500);
+                    },
+                    success: function(){
+                        $('#loadings').animate({width: '100%'}, 1500);
+                    }
+                });
+            }); 
         });
     </script>

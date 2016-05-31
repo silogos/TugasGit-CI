@@ -38,7 +38,7 @@ class Home extends CI_Controller {
         
         $this->load->view('templates/header', $sesi);
         $this->load->view('home/user_view',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer_t');
                 
     }
     
@@ -51,7 +51,7 @@ class Home extends CI_Controller {
         
         $this->load->view('templates/header', $sesi);
         $this->load->view('home/bookmark_view',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer_t');
                 
     }
     

@@ -29,7 +29,7 @@ class CrudUser extends CI_Controller {
         $sesi['username']=$this->sesi;
         $this->load->view('templates/header',$sesi);
         $this->load->view('user/tambah');
-                
+        $this->load->view('templates/footer');        
     }
     
     function tambah_aksi()
@@ -43,6 +43,7 @@ class CrudUser extends CI_Controller {
             $sesi['username']=$this->sesi;
             $this->load->view('templates/header',$sesi);
             $this->load->view('user/tambah');
+            $this->load->view('templates/footer');
         }
         else
         {
@@ -81,6 +82,7 @@ class CrudUser extends CI_Controller {
         $sesi['username']=$this->sesi;
         $this->load->view('templates/header',$sesi);
         $this->load->view('user/edit',$data);
+        $this->load->view('templates/footer');
                 
     }
     
@@ -98,6 +100,7 @@ class CrudUser extends CI_Controller {
             $sesi['username']=$this->sesi;
             $this->load->view('templates/header',$sesi);
             $this->load->view('user/edit',$data);
+            $this->load->view('templates/footer');
         
         }
         else

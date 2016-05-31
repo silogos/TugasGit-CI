@@ -62,13 +62,4 @@
         <div class="col-md-2"></div>
     </div>    
 </div>
-    <script src="<?php echo base_url('assets/plugin/datatable/js/jquery-1.11.1.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/plugin/datatable/js/bootstrap.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/plugin/datatable/js/jquery.dataTables.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/plugin/datatable/js/dataTables.bootstrap.js') ?>"></script>
-
-    <script>
-        $(function(){
-            $('#user').dataTable();
-        });
-    </script>
+    

@@ -27,7 +27,7 @@
                         <input class="form-control" type="password" name="password" required="" placeholder="Password"/>
                     </div>
                     
-                    <input class="form-control btn btn-success" type="submit" value="TAMBAH" id="login" />
+                    <input class="form-control btn btn-primary" type="submit" value="TAMBAH" id="login" />
                 
                 </form>
            	</div>
@@ -36,4 +36,4 @@
         <div class="col-md-4"></div>    
     </div>
 </div>
-
+    <script></script>
