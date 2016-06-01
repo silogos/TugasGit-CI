@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugin/datatable/css/dataTables.bootstrap.css'); ?>"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugin/datatable/css/dataTables.bootstrap.min.css'); ?>"/>
 </head>
 <body>
 <div class="blur"></div>
@@ -17,6 +17,11 @@
                 <li><a href="<?php echo base_url('index.php/home/bookmark'); ?>">BOOKMARK</a></li>
             </ul>
             <div id="content">
+                <div class="alert alert-danger" role="alert">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  <span class="sr-only">Error:</span>
+                  Enter a valid email address
+                </div>
                 <table id="user" class="table table-bordered table-striped">
                     <thead>
                         <th>NO</th>
@@ -43,9 +48,11 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th colspan="5">
-                            <?php echo anchor(base_url('index.php/cruduser/tambah'),'<i class="fa fa-plus-square"> TAMBAH</i>',array('class'=>'btn btn-primary')); ?>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#hps">Small modal</button>
+                            <td></td>
+                            <td></td>
+                            <th>
+                                <?php echo anchor(base_url('index.php/cruduser/tambah'),'<i class="fa fa-plus-square"> TAMBAH</i>',array('class'=>'btn btn-primary')); ?>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#hps">Small modal</button>
                             </th>
                         </tr>
                     </tfoot>
@@ -71,14 +78,15 @@
             <div class="modal-body">
             
                 <div class="form-group">
-                    <input class="form-control" type="text" name="username" required="" placeholder="Username"/>
+                    <input class="form-control" type="text" name="username" required="" id="username" placeholder="Username"/>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" name="password" required="" placeholder="Password"/>
+                    <input class="form-control" type="password" name="password" required="" id="password" placeholder="Password"/>
                 </div>
-                
-                <div id="loadings" style="width: 0px; height: 30px; background: aquamarine;">
+                <div class="progress" style="display: none;">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width: 1%;">
                     
+                  </div>
                 </div>
                 
             </div>
@@ -90,22 +98,3 @@
     </div>
 </div>
     
-    
-<script>
-        $(document).ready(function(){
-            $('.tambahuser').click(function(){
-                var data = $('.form-user').serialize();
-                $.ajax({
-                    type: 'POST',
-                    url: "<?php echo base_url('index.php/cruduser/tambah_aksi'); ?>",
-                    data: data,
-                    beforeSend: function(){
-                        $('#loadings').animate({width: '60%'}, 1500);
-                    },
-                    success: function(){
-                        $('#loadings').animate({width: '100%'}, 1500);
-                    }
-                });
-            }); 
-        });
-    </script>

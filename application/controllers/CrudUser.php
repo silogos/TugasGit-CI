@@ -2,7 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class CrudUser extends CI_Controller {
 
-    private $sesi=array();        
+    private $sesi=array();
+    private $notif=array();        
 
     function __construct()
     {
@@ -44,31 +45,67 @@ class CrudUser extends CI_Controller {
             $this->load->view('templates/header',$sesi);
             $this->load->view('user/tambah');
             $this->load->view('templates/footer');
+            
+            $respone=array(
+                'error'=>'true',
+                'msg'=>'Username Sudah Ada...!'
+            );
+            echo json_encode($respone);
+        
         }
         else
         {
             echo"<script>alert('Data Telah Terdaftar..!')</script>";
-            redirect('home/user','refresh');
+            $respone=array(
+                'error'=>'true',
+                'msg'=>'Data Telah Terdaftar..!'
+            );
+            echo json_encode($respone);
         }
                 
     }
     
     function verify($username)
     {
+        
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $un = array('username'=>$username);
         $result = $this->user_model->tampil_id('user',$un);
-        if($result){
-            $this->form_validation->set_message('verify','Username sudah ada...!');
+        
+        if($result)
+        {
             return FALSE;
-        }else{
+        }
+        else{
+        
             $data=array(
                 'username'=>$username,
                 'password'=>md5($password)
             );
-            $this->user_model->input('user',$data);
-            return TRUE;
+        
+            $insert=$this->user_model->input('user',$data);
+            
+            if($insert)
+            {
+                $respone = array(
+                    'error'=>'false',
+                    'msg'=>'Data Telah Terdaftar..!'
+                );
+                echo json_encode($respone);    
+                return TRUE;
+            }
+            else
+            {
+                $respone = array(
+                    'error'=>'false',
+                    'msg'=>'Data Gagal Terdaftar..!'
+                );
+                echo json_encode($respone);    
+                return TRUE;
+            }
+            
+            
         }
         
     }
