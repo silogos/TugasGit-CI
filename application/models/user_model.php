@@ -62,7 +62,12 @@
         
         function input($table, $data)
         {
-            $this->db->insert($table, $data);
+            $query = $this->db->insert($table, $data);
+            if($query){
+                return true;
+            }else{
+                return false;
+            }
         }
         
         function edit($table, $where)

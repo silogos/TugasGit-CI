@@ -41,10 +41,6 @@ class CrudUser extends CI_Controller {
         
         if($this->form_validation->run() == FALSE)
         {
-            $sesi['username']=$this->sesi;
-            $this->load->view('templates/header',$sesi);
-            $this->load->view('user/tambah');
-            $this->load->view('templates/footer');
             
             $respone=array(
                 'error'=>'true',
@@ -52,15 +48,6 @@ class CrudUser extends CI_Controller {
             );
             echo json_encode($respone);
         
-        }
-        else
-        {
-            echo"<script>alert('Data Telah Terdaftar..!')</script>";
-            $respone=array(
-                'error'=>'true',
-                'msg'=>'Data Telah Terdaftar..!'
-            );
-            echo json_encode($respone);
         }
                 
     }

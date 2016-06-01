@@ -28,24 +28,6 @@
                         <th>USERNAME</th>
                         <th>AKSI</th>
                     </thead>
-                    <tbody>
-                    <?php
-                        $no=1;
-                        foreach($user as $row){
-                    ?>
-                        <tr>
-                            <td><?php echo $no; ?> </td>
-                            <td><?php echo $row->username ?></td>
-                            <td>
-                                <?php echo anchor(base_url('index.php/cruduser/edit').'/'.$row->id,'<i class="fa fa-edit"> EDIT</i>',array('class'=>'btn btn-default')); ?>
-                                <?php echo anchor(base_url('index.php/cruduser/delete').'/'.$row->id,'<i class="fa fa-trash"> DELETE</i>',array('class'=>'btn btn-danger')); ?>
-                            </td>
-                        </tr>
-                    <?php
-                            $no++;
-                        }
-                    ?>
-                    </tbody>
                     <tfoot>
                         <tr>
                             <td></td>

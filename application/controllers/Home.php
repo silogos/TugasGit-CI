@@ -42,6 +42,14 @@ class Home extends CI_Controller {
                 
     }
     
+    function user_data()
+    {
+        $sesi['username']= $this->sesi;
+        $this->load->model('user_model');
+        $data['user'] = $this->user_model->tampil('user',$sesi)->result();
+        $this->load->view('home/user_data',$data);
+    }
+    
     function bookmark()
 	{
         $sesi['username']= $this->sesi;
