@@ -35,6 +35,7 @@
                             <th>
                                 <?php echo anchor(base_url('index.php/cruduser/tambah'),'<i class="fa fa-plus-square"> TAMBAH</i>',array('class'=>'btn btn-primary')); ?>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#hps">Small modal</button>
+                                <a id="test">sasa</a>
                             </th>
                         </tr>
                     </tfoot>

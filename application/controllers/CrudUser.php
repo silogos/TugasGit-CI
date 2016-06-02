@@ -173,13 +173,18 @@ class CrudUser extends CI_Controller {
         $query = $this->user_model->delete('user',$where);
         
         if($query){
-            echo"<script>alert('Data Telah Terhapus..!')</script>";
+            $respone = array(
+                'error'=>'false',
+                'msg'=>'Data Telah Terhapus..!'
+            );
+            echo json_encode($respone);  
         }else{
-            echo"<script>alert('Data Gagal Terhapus..!')</script>";
-        }
-        
-        redirect('home/user','refresh');
-                
+            $respone = array(
+                'error'=>'true',
+                'msg'=>'Data Gagal Terhapus..!'
+            );
+            echo json_encode($respone);
+        }                
     }
     
 }

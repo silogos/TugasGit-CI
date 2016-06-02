@@ -83,9 +83,15 @@
         
         function delete($table, $where)
         {
-            $this->db->where($where);
-            $this->db->delete($table);
-            return TRUE;
+                        
+            $query = $this->db->delete($table, $where);
+            
+            if($query){
+                return false;
+            }
+            else{
+                return true;
+            }
         }
         
     }
