@@ -4,7 +4,7 @@
         $data[]=array(
             'no'=>$no,
             'username'=>$row->username,
-            'id'=>'<a class="btn btn-default" data="'.$row->id.'"><i class="fa fa-edit"></i> EDIT</a> <a id="delete" class="btn btn-danger"><i class="fa fa-trash"></i> DELETE</a>'
+            'id'=>'<a class="btn btn-default" onclick="mod_edit('.$row->id.')"><i class="fa fa-edit"></i> EDIT</a> <a class="btn btn-danger" onclick="mod_delete('.$row->id.')"><i class="fa fa-trash"></i> DELETE</a>'
         );
         $no++;
     }

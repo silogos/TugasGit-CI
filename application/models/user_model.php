@@ -87,10 +87,10 @@
             $query = $this->db->delete($table, $where);
             
             if($query){
-                return false;
+                return true;
             }
             else{
-                return true;
+                return false;
             }
         }
         
