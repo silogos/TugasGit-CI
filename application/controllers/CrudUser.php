@@ -43,7 +43,7 @@ class CrudUser extends CI_Controller {
         {
             
             $respone=array(
-                'error'=>'true',
+                'error'=>true,
                 'msg'=>'Username Sudah Ada...!'
             );
             echo json_encode($respone);
@@ -76,7 +76,7 @@ class CrudUser extends CI_Controller {
             if($insert)
             {
                 $respone = array(
-                    'error'=>'false',
+                    'error'=>false,
                     'msg'=>'Data Telah Terdaftar..!'
                 );
                 echo json_encode($respone);    
@@ -85,7 +85,7 @@ class CrudUser extends CI_Controller {
             else
             {
                 $respone = array(
-                    'error'=>'false',
+                    'error'=>true,
                     'msg'=>'Data Gagal Terdaftar..!'
                 );
                 echo json_encode($respone);    
@@ -103,10 +103,7 @@ class CrudUser extends CI_Controller {
         $data['user'] = $this->user_model->edit('user',$where)->result();
         
         
-        $sesi['username']=$this->sesi;
-        $this->load->view('templates/header',$sesi);
         $this->load->view('user/edit',$data);
-        $this->load->view('templates/footer');
                 
     }
     
@@ -115,22 +112,20 @@ class CrudUser extends CI_Controller {
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('pass_word', 'PasswordLama', 'trim|required|callback_cek_pw');
         $this->form_validation->set_rules('password', 'PasswordBaru', 'trim|required');
-        
         if($this->form_validation->run() == FALSE){
-            $id = $this->input->post('id');
-            $where = array('id'=>$id);
-            $data['user'] = $this->user_model->edit('user',$where)->result();
-        
-            $sesi['username']=$this->sesi;
-            $this->load->view('templates/header',$sesi);
-            $this->load->view('user/edit',$data);
-            $this->load->view('templates/footer');
-        
+            $respone=array(
+                'error'=>true,
+                'msg'=>'Data belum benar...!'
+            );
+            echo json_encode($respone);
         }
         else
         {
-            echo"<script>alert('Data Telah Diperbaharui..!')</script>";
-            redirect('home/user/','refresh');
+            $respone=array(
+                'error'=>false,
+                'msg'=>'Data telah diperbaharui...!'
+            );
+            echo json_encode($respone);
             
         }
         
@@ -174,13 +169,13 @@ class CrudUser extends CI_Controller {
         
         if($query){
             $respone = array(
-                'error'=>'false',
+                'error'=>false,
                 'msg'=>'Data Telah Terhapus..!'
             );
             echo json_encode($respone);  
         }else{
             $respone = array(
-                'error'=>'true',
+                'error'=>true,
                 'msg'=>'Data Gagal Terhapus..!'
             );
             echo json_encode($respone);
