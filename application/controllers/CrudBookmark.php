@@ -54,9 +54,11 @@ class CrudBookmark extends CI_Controller {
         
         if($this->form_validation->run() == FALSE)
         {
-            $sesi['username']=$this->sesi;
-            $this->load->view('templates/header',$sesi);
-            $this->load->view('bookmark/tambah');
+            $respone = array(
+                'error'=>true,
+                'msg'=>'Harap isi data dengan benar...!'
+            );
+            echo json_encode($respone);  
         }
         else
         {
@@ -69,13 +71,19 @@ class CrudBookmark extends CI_Controller {
             
             if($query)
             {
-                echo"<script>alert('Data Telah Terdaftar..!')</script>";
-                redirect('home/bookmark','refresh');
+                $respone = array(
+                    'error'=>false,
+                    'msg'=>'Data Telah Terdaftar..!'
+                );
+                echo json_encode($respone);
             }
             else
-            {
-                echo"<script>alert('Data Gagal Terdaftar..!')</script>";
-                redirect('home/bookmark','refresh');
+            {   
+                $respone = array(
+                    'error'=>true,
+                    'msg'=>'Data Gagal Terdaftar..!'
+                );
+                echo json_encode($respone);
             }
             
             
@@ -90,7 +98,6 @@ class CrudBookmark extends CI_Controller {
         
         
         $sesi['username']=$this->sesi;
-        $this->load->view('templates/header',$sesi);
         $this->load->view('bookmark/edit',$data);
                 
     }
@@ -112,13 +119,19 @@ class CrudBookmark extends CI_Controller {
         $query = $data['bookmark'] = $this->bookmark_model->update('bookmark',$where,$data);
         
         if($query){
-            echo"<script>alert('Data Telah Diperbaharui..!')</script>";
+            $respone = array(
+                'error'=>false,
+                'msg'=>'Data Telah Diperbaharui..!'
+            );
+            echo json_encode($respone);
         }else{
-            echo"<script>alert('Data Gagal Diperbaharui..!')</script>";
+            $respone = array(
+                'error'=>true,
+                'msg'=>'Data Gagal Diperbaharui..!'
+            );
+            echo json_encode($respone);
         }
         
-        redirect('home/bookmark','refresh');
-                
     }
     
     function delete($id)
@@ -129,13 +142,19 @@ class CrudBookmark extends CI_Controller {
         $query = $this->bookmark_model->delete('bookmark',$where);
         
         if($query){
-            echo"<script>alert('Data Telah Terhapus..!')</script>";
+            $respone = array(
+                'error'=>false,
+                'msg'=>'Data Telah Terhapus..!'
+            );
+            echo json_encode($respone);  
         }else{
-            echo"<script>alert('Data Gagal Terhapus..!')</script>";
-        }
-        
-        redirect('home/bookmark','refresh');
+            $respone = array(
+                'error'=>true,
+                'msg'=>'Data Gagal Terhapus..!'
+            );
+        echo json_encode($respone);
                 
     }
     
-}
+    }
+} 

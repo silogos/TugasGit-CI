@@ -1,15 +1,14 @@
-var user;
+var bookmark;
     
 $(document).ready(function(){ 
     
     //datatable
-    user = $('#user').DataTable({
-        processing: true,
-        serverside: true,
-        ajax: 'user_data',
+    bookmark = $('#bookmark').DataTable({
+        ajax: 'bookmark_data',
         columns: [
             {'data': 'no'},
-            {'data': 'username'},
+            {'data': 'title'},
+            {'data': 'url'},
             {'data': 'id'}
         ]
     });
@@ -17,22 +16,34 @@ $(document).ready(function(){
 });
 
 function reload(){
-    user.ajax.reload();
+    bookmark.ajax.reload();
 }
 
-
+function mod_view(id){
+    $('#detail_bookmark').modal('show');
+    $.ajax({
+        type: 'GET',
+        url: '../crudbookmark/edit/'+id,
+        dataType: 'JSON',
+        success: function(data){
+            $('#form-detail-bookmark input[name=title]').val(data.title);
+            $('#form-detail-bookmark input[name=url]').val(data.url);
+            $('#form-detail-bookmark textarea[name=description]').val(data.description);
+        }
+    });
+}
 
 function mod_tambah(){
-    $('#tambah_user').modal('show');
-    $('#username').focus();
+    $('#tambah_bookmark').modal('show');
+    $('#title').focus();
     
 }
 
 function tambah(){
-    var data = $('#form-tambah-user').serialize();
+    var data = $('#form-tambah-bookmark').serialize();
     $.ajax({
         type: 'POST',
-        url: '../cruduser/tambah_aksi',
+        url: '../crudbookmark/tambah_aksi',
         dataType: 'JSON', 
         data: data,
         beforeSend: function(){
@@ -41,7 +52,8 @@ function tambah(){
         },
         success: function(response){
             $('.progress-bar').animate({width: '100%'}, 500);
-
+            $('.progress').css('display','none');
+            $('#title,#url,#description').val('');
             remove_notif();
             $('.eror_detail').text(response.msg);
             if(response.error == true){
@@ -54,10 +66,7 @@ function tambah(){
             $('#notif').fadeIn(1000);
             setTimeout( 
             function(){
-                $('#tambah_user').modal('hide');
-                $('.progress-bar').css('width','1px');
-                $('#username,#password').val('');    
-                $('.progress').css('display','none');
+                $('#tambah_bookmark').modal('hide');
                 reload();
             },1000); 
         }
@@ -65,27 +74,27 @@ function tambah(){
 }
 
 function mod_edit(id){
-    $('#edit_user').modal('show');
+    $('#edit_bookmark').modal('show');
     $.ajax({
         type: 'GET',
-        url: '../cruduser/edit/'+id,
+        url: '../crudbookmark/edit/'+id,
         dataType: 'JSON',
         success: function(data){
-            $('#form-edit-user input[name=id]').val(data.id);
-            $('#form-edit-user input[name=username]').val(data.username);
-            $('#form-edit-user input[name=pass_word]').focus();
+            $('#form-edit-bookmark input[name=id]').val(data.id);
+            $('#form-edit-bookmark input[name=title]').val(data.title);
+            $('#form-edit-bookmark input[name=url]').val(data.url);
+            $('#form-edit-bookmark textarea[name=description]').val(data.description);
+            $('#title').focus();
         }
     });
 }
 
 function edit(){
-    
-    var data = $('#form-edit-user').serialize();
-     
+    var data = $('#form-edit-bookmark').serialize();
     $.ajax({
         type: 'POST',
-        url: '../cruduser/edit_aksi',
-        dataType: 'JSON',        
+        url: '../crudbookmark/edit_aksi',
+        dataType: 'JSON', 
         data: data,
         beforeSend: function(){
             $('.progress').show();
@@ -94,20 +103,20 @@ function edit(){
         success: function(response){
             $('.progress-bar').animate({width: '100%'}, 500);
             $('.progress').css('display','none');
-            $('#username,#password').val('');
+            $('#title,#url,#description').val('');
             remove_notif();
             $('.eror_detail').text(response.msg);
             if(response.error == true){
-                $('#notif_icon').addClass('fa-info');
                 $('#notif').addClass('alert-warning'); 
+                $('#notif_icon').addClass('fa-info');
             }else{
-                $('#notif_icon').addClass('fa-check');
                 $('#notif').addClass('alert-success');
+                $('#notif_icon').addClass('fa-plus');
             }
             $('#notif').fadeIn(1000);
             setTimeout( 
             function(){
-                $('#edit_user').modal('hide');
+                $('#edit_bookmark').modal('hide');
                 reload();
             },1000); 
         }
@@ -123,7 +132,7 @@ function mod_delete(id){
 function deleted(id){  
     
     $.ajax({
-        url: '../cruduser/delete/'+id,
+        url: '../crudbookmark/delete/'+id,
         type: 'GET',
         dataType: 'JSON',
         success: function(response){
@@ -138,10 +147,11 @@ function deleted(id){
                 $('#notif_icon').addClass('fa-trash'); 
                 $('#notif').addClass('alert-danger');
             }
-            $('#notif').fadeIn(1000);
+            $('#notif').fadeIn(3000);
             reload();
         }
     });
+    
 }
 
 function remove_notif(){

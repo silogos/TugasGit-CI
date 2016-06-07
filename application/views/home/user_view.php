@@ -53,8 +53,8 @@
     </div>    
 </div>
 
-
-<div class="modal" id="tambah_user">
+<!-- Modal Tambah User -->
+<div class="modal fade" id="tambah_user">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
@@ -85,8 +85,8 @@
     </div>
 </div>
 
-
-<div class="modal" id="edit_user">
+<!-- Modal Edit User -->
+<div class="modal fade" id="edit_user">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
@@ -96,8 +96,8 @@
             <div class="modal-body">
                 <form id="form-edit-user">
                     <div class="form-group">
-                        <input type="hidden" name="id" id="id" required="" disabled=""/>
-                        <input class="form-control" type="text" name="username" id="username" required="" id="username" placeholder="Username" disabled=""/>
+                        <input type="hidden" name="id" id="id" required="" readonly=""/>
+                        <input class="form-control" type="text" name="username" id="username" required="" id="username" placeholder="Username" readonly=""/>
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="password" name="pass_word" required="" id="password" placeholder="Password Lama"/>
@@ -122,7 +122,7 @@
 </div>
 
 <!-- modal delete user --!>
-<div class="modal" id="hapus">
+<div class="modal fade" id="hapus">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">

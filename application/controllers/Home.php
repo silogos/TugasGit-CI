@@ -33,11 +33,9 @@ class Home extends CI_Controller {
     function user()
 	{
         $sesi['username']= $this->sesi;
-        $this->load->model('user_model');
-        $data['user'] = $this->user_model->tampil('user',$sesi)->result();
         
         $this->load->view('templates/header', $sesi);
-        $this->load->view('home/user_view',$data);
+        $this->load->view('home/user_view');
         $this->load->view('templates/footer_t');
                 
     }
@@ -59,8 +57,16 @@ class Home extends CI_Controller {
         
         $this->load->view('templates/header', $sesi);
         $this->load->view('home/bookmark_view',$data);
-        $this->load->view('templates/footer_t');
+        $this->load->view('templates/footer_b');
                 
+    }
+    
+    function bookmark_data()
+    {
+        
+        $this->load->model('bookmark_model');
+        $data['bookmark'] = $this->bookmark_model->tampil()->result();
+        $this->load->view('home/bookmark_data',$data);
     }
     
     function logout()
