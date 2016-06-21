@@ -33,9 +33,11 @@ class CrudUser extends CI_Controller {
         $this->load->view('templates/footer');        
     }
     
-    function tambah_aksi()
+    function tambah_aksi($from)
 	{
-	   
+        if($from=='ang'){
+            $_POST = json_decode(file_get_contents('php://input'), true);
+        }
         $this->form_validation->set_rules('username', 'Username', 'trim|required|callback_verify');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         
@@ -51,6 +53,7 @@ class CrudUser extends CI_Controller {
         }
                 
     }
+    
     
     function verify($username)
     {
@@ -107,8 +110,11 @@ class CrudUser extends CI_Controller {
                 
     }
     
-    function edit_aksi()
+    function edit_aksi($from)
 	{  
+        if($from=='ang'){
+            $_POST = json_decode(file_get_contents('php://input'), true);
+        }
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('pass_word', 'PasswordLama', 'trim|required|callback_cek_pw');
         $this->form_validation->set_rules('password', 'PasswordBaru', 'trim|required');

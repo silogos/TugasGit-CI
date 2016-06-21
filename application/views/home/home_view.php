@@ -16,6 +16,7 @@
                 <li class="active"><a href="<?php echo base_url('index.php/home/'); ?>">HOME</a></li>
                 <li><a href="<?php echo base_url('index.php/home/user'); ?>">USER</a></li>
                 <li><a href="<?php echo base_url('index.php/home/bookmark'); ?>">BOOKMARK</a></li>
+                <li><a href="<?php echo base_url('index.php/home/logout'); ?>"><i class="fa fa-sign-out"></i> LOGOUT</a></li>
             </ul>
             <div id="content">
                 <h2 class="text-center">Selamat Datang di Halaman Admin <?php echo"$username"; ?>.</h2>

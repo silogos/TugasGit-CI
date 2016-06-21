@@ -48,6 +48,14 @@ class Home extends CI_Controller {
         $this->load->view('home/user_data',$data);
     }
     
+    function angular_user_data()
+    {
+        $sesi['username']= $this->sesi;
+        $this->load->model('user_model');
+        $data['user'] = $this->user_model->tampil('user',$sesi)->result();
+        $this->load->view('home/angular_user_data',$data);
+    }
+    
     function bookmark()
 	{
         $sesi['username']= $this->sesi;
@@ -59,6 +67,14 @@ class Home extends CI_Controller {
         $this->load->view('home/bookmark_view',$data);
         $this->load->view('templates/footer_b');
                 
+    }
+    
+    function angular_bookmark_data()
+    {
+        
+        $this->load->model('bookmark_model');
+        $data['bookmark'] = $this->bookmark_model->tampil()->result();
+        $this->load->view('home/angular_bookmark_data',$data);
     }
     
     function bookmark_data()

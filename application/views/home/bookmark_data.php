@@ -4,7 +4,7 @@
         $data[]=array(
             'no'=>$no,
             'title'=>$row->title,
-            'url'=>$row->url,
+            'url'=>'<a target="_blank" href="http://'.$row->url.'">'.$row->url.'</a>',
             'id'=>'<a class="btn btn-primary" onclick="mod_view('.$row->id.')"><i class="fa fa-eye"></i> VIEW</a> <a class="btn btn-default" onclick="mod_edit('.$row->id.')"><i class="fa fa-edit"></i> EDIT</a> <a class="btn btn-danger" onclick="mod_delete('.$row->id.')"><i class="fa fa-trash"></i> DELETE</a>'
         );
         $no++;

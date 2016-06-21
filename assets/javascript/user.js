@@ -13,10 +13,14 @@ $(document).ready(function(){
             {'data': 'id'}
         ]
     });
+    reload();
     
 });
 
 function reload(){
+    $('#user_length > label > select').attr('onchange','reload()');
+    $('[type="search"]').attr('onkeyup','reload()');
+    $('#user_paginate > ul > li > a').attr('onclick','reload()');
     user.ajax.reload();
 }
 
@@ -32,7 +36,7 @@ function tambah(){
     var data = $('#form-tambah-user').serialize();
     $.ajax({
         type: 'POST',
-        url: '../cruduser/tambah_aksi',
+        url: '../cruduser/tambah_aksi/ci',
         dataType: 'JSON', 
         data: data,
         beforeSend: function(){
@@ -84,7 +88,7 @@ function edit(){
      
     $.ajax({
         type: 'POST',
-        url: '../cruduser/edit_aksi',
+        url: '../cruduser/edit_aksi/ci',
         dataType: 'JSON',        
         data: data,
         beforeSend: function(){

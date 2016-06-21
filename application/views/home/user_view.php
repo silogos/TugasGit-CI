@@ -15,6 +15,7 @@
                 <li><a href="<?php echo base_url('index.php/home/'); ?>">HOME</a></li>
                 <li class="active"><a href="<?php echo base_url('index.php/home/user'); ?>">USER</a></li>
                 <li><a href="<?php echo base_url('index.php/home/bookmark'); ?>">BOOKMARK</a></li>
+                <li><a href="<?php echo base_url('index.php/home/logout'); ?>"><i class="fa fa-sign-out"></i> LOGOUT</a></li>
             </ul>
             <div id="content">
                 <div id="notif" class="alert" role="alert" style="display: none;">
@@ -61,7 +62,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-remove"></i></span></button>
             <h4 class="modal-title">TAMBAH USER</h4>
             </div>
-            <form id="form-tambah-user">
+            <form id="form-tambah-user" onsubmit="return false;">
             <div class="modal-body">
             
                 <div class="form-group">
@@ -78,7 +79,7 @@
                 
             </div>
             <div class="modal-footer">
-                <a href="#tambah" onclick="tambah()" class="form-control btn btn-primary" >TAMBAH</a>
+                <button type="submit" onclick="tambah()" class="form-control btn btn-primary" >TAMBAH</button>
             </div>
             </form>
         </div>

@@ -15,6 +15,7 @@
                 <li><a href="<?php echo base_url('index.php/home/'); ?>">HOME</a></li>
                 <li><a href="<?php echo base_url('index.php/home/user'); ?>">USER</a></li>
                 <li class="active"><a href="<?php echo base_url('index.php/home/bookmark'); ?>">BOOKMARK</a></li>
+                <li><a href="<?php echo base_url('index.php/home/logout'); ?>"><i class="fa fa-sign-out"></i> LOGOUT</a></li>
             </ul>
             <div id="content">
                 <div id="notif" class="alert" role="alert" style="display: none;">
@@ -72,11 +73,6 @@
                 </div>
                 <div class="form-group">
                     <textarea style="resize: vertical;" class="form-control" name="description" required="" id="description" placeholder="Description" readonly=""></textarea>
-                </div>
-                <div class="progress" style="display: none;">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width: 1%;">
-                    
-                  </div>
                 </div>
                 
             </div>
