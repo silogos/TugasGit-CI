@@ -43,7 +43,7 @@ function tambah(){
     var data = $('#form-tambah-bookmark').serialize();
     $.ajax({
         type: 'POST',
-        url: '../crudbookmark/tambah_aksi',
+        url: '../crudbookmark/tambah_aksi/ci',
         dataType: 'JSON', 
         data: data,
         beforeSend: function(){
@@ -93,7 +93,7 @@ function edit(){
     var data = $('#form-edit-bookmark').serialize();
     $.ajax({
         type: 'POST',
-        url: '../crudbookmark/edit_aksi',
+        url: '../crudbookmark/edit_aksi/ci',
         dataType: 'JSON', 
         data: data,
         beforeSend: function(){

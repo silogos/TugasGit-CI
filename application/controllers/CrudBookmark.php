@@ -45,9 +45,12 @@ class CrudBookmark extends CI_Controller {
                 
     }
     
-    function tambah_aksi()
+    function tambah_aksi($from)
 	{
-	   
+        if($from=='ang'){
+            $_POST = json_decode(file_get_contents('php://input'), true);
+        }
+        
         $this->form_validation->set_rules('title', 'Title', 'trim|required');
         $this->form_validation->set_rules('url', 'Url', 'trim|required');
         $this->form_validation->set_rules('description', 'Description', 'trim');
@@ -102,8 +105,11 @@ class CrudBookmark extends CI_Controller {
                 
     }
     
-    function edit_aksi()
+    function edit_aksi($from)
 	{
+        if($from=='ang'){
+            $_POST = json_decode(file_get_contents('php://input'), true);
+        }
         $id = $this->input->post('id');
         $title = $this->input->post('title');
         $url = $this->input->post('url');
