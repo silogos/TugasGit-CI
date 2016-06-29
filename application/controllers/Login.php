@@ -9,7 +9,6 @@ class Login extends CI_Controller {
         parent::__construct();
         if($this->session->userdata('logged_in'))
         {
-            redirect('home','refresh');
         }
         
         $this->load->model('login_model');
@@ -38,6 +37,30 @@ class Login extends CI_Controller {
         
     }
     
+    public function login()
+	{
+        $_POST = json_decode(file_get_contents('php://input'), true);
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|callback_verify');
+        
+        if($this->form_validation->run() == FALSE)
+        {
+            $respone = array(
+                'status'=>false
+            );
+            echo json_encode($respone);  
+        }
+        else
+        {
+            $respone = array(
+                'status'=>true
+            );
+            echo json_encode($respone);
+        }
+        
+    }
+    
     public function verify($pw)
     {        
         
@@ -61,6 +84,19 @@ class Login extends CI_Controller {
         {
             $this->form_validation->set_message('verify', 'Salah Username atau Password yeuh...!');
             return FALSE;
+        }
+        
+    }
+    
+    public function cek_sesi(){
+        
+        if($this->session->userdata('logged_in'))
+        {
+            echo'{"status":true}';
+        }
+        else
+        {
+            echo'{"status":false}';
         }
         
     }
